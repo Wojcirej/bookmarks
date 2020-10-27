@@ -1,0 +1,8 @@
+inherit_gem:
+  rubocop-config-prettier: config/rubocop.yml
+
+Layout/LineLength:
+  Max: 120
+
+Documentation:
+  Enabled: false

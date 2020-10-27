@@ -1,0 +1,4 @@
+.rubocop.yml
+docker-compose.local.yml
+Dockerfile.local
+README.md

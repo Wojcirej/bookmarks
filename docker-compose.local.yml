@@ -1,0 +1,36 @@
+version: '3.7'
+
+services:
+  bookmarks_web_development:
+    build:
+      context: "."
+      dockerfile: Dockerfile.local
+    environment:
+      RAILS_ENV: development
+      DB_HOST: bookmarks_db_development
+    container_name: bookmarks_web_development
+    ports:
+      - "${RAILS_PORT}:3000"
+    volumes:
+      - ./:/usr/src/app
+    command: rails server --binding 0.0.0.0 --port 3000
+
+  bookmarks_db_development:
+    image: postgres:12.4
+    environment:
+      POSTGRES_DB: bookmarks_development
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    container_name: bookmarks_db_development
+    ports:
+      - "${DEV_DB_PORT}:5432"
+
+  bookmarks_db_test:
+    image: postgres:12.4
+    environment:
+      POSTGRES_DB: bookmarks_test
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    container_name: bookmarks_db_test
+    ports:
+      - "${TEST_DB_PORT}:5432"
