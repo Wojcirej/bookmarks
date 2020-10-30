@@ -17,6 +17,8 @@ RSpec.describe Category, type: :model do
   end
   it { is_expected.to validate_length_of(:name).is_at_most(30) }
 
+  it { is_expected.to have_many(:links) }
+
   describe '.add_new' do
     context 'when valid params' do
       let(:params) { { name: 'Completely new name' } }

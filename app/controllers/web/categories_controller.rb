@@ -4,7 +4,7 @@ module Web
   class CategoriesController < Web::BaseController
     before_action :set_category, only: %i[show destroy]
     def show
-      @links = []
+      @links = @category.links
     end
 
     def new

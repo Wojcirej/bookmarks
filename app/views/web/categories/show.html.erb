@@ -2,6 +2,7 @@
 
 <%= link_to 'Add sub-category in this category', new_category_path(parent_id: @category.id), class: 'btn btn-success' %>
 <%= link_to 'Delete this category', category_path(@category), method: :delete, data: { confirm: "Are you sure you want to delete category #{@category.name}? This will also remove all links associated with this category." }, class: 'btn btn-danger' %>
+<%= link_to 'Add bookmark to this category', new__category_link_path(@category), class: 'btn btn-success' %>
 
 <table class="table table-hover table-dark mt-5">
   <thead>

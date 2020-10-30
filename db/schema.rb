@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_29_183011) do
+ActiveRecord::Schema.define(version: 2020_10_30_171211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -23,4 +23,15 @@ ActiveRecord::Schema.define(version: 2020_10_29_183011) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "links", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", limit: 60, null: false
+    t.text "description"
+    t.string "url", null: false
+    t.uuid "category_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["category_id"], name: "index_links_on_category_id"
+  end
+
+  add_foreign_key "links", "categories"
 end

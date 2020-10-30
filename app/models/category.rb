@@ -3,7 +3,7 @@
 class Category < ApplicationRecord
   UUID_FORMAT = /\A[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}/i
     .freeze
-
+  has_many :links
   has_ancestry(primary_key_format: UUID_FORMAT)
   validates :name,
             presence: { message: 'Please specify category name' },
