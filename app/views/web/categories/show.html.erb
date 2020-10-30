@@ -1,0 +1,28 @@
+<h2><%= @category.name %> bookmarks</h2>
+
+<%= link_to 'Add sub-category in this category', new_category_path(parent_id: @category.id), class: 'btn btn-success' %>
+<%= link_to 'Delete this category', category_path(@category), method: :delete, data: { confirm: "Are you sure you want to delete category #{@category.name}? This will also remove all links associated with this category." }, class: 'btn btn-danger' %>
+
+<table class="table table-hover table-dark mt-5">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Name</th>
+    <th scope="col">URL</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @links.each_with_index do |link, index| %>
+    <tr>
+      <td><%= index + 1 %></td>
+      <td><%= link.name %></td>
+      <td><%= link.url %></td>
+      <td>
+        <%= link_to 'Open', link.url, target: '_blank', class: 'btn btn-primary btn-sm' %>
+        <%= link_to 'Delete', _category_link_path(@category, link), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-sm" %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

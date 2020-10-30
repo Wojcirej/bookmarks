@@ -10,6 +10,23 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header class="row header">
+      Bookmarks
+    </header>
+
+    <section class="row mt-5">
+      <%= render 'layouts/left_menu' %>
+      <main class="main col-8">
+        <div class="container-fluid">
+          <% flash.each do |name, msg| %>
+            <%= content_tag(:div, msg, class: 'alert alert-info') %>
+          <% end %>
+          <div class="jumbotron">
+            <%= yield %>
+          </div>
+        </div>
+      </main>
+      <%= render 'layouts/right_menu' %>
+    </section>
   </body>
 </html>
