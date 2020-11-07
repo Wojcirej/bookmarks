@@ -1,4 +1,10 @@
+coverage
+node_modules
+spec
+.generators
+.rspec
 .rubocop.yml
 docker-compose.local.yml
+Dockerfile
 Dockerfile.local
 README.md
